@@ -12,7 +12,7 @@ struct _cell {
 
 struct _board {
   int size;
-  int * data;
+  cell * data; //???
   int bombs;
   int cleanCells;
 };
