@@ -44,5 +44,5 @@ int revealCell(int row, int col);
  *      1/0 for hidden or visible if hidden corresponding element
  *      prints as ~
  *Or can we create a matrix of other objects where each object has 2 values
- *      Value, and 1/0 for hidden or visible.
+ *      Value, and 1/0 for hidden or visible. Like "point" from quiz
  */
