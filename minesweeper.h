@@ -39,10 +39,6 @@ int revealCell(int row, int col);
  * Print Result Message
  * 
  *Other Ideas:
- *Possibly 2 matrices for each board
- *      1 for true identity (numerical value) and one with 
- *      1/0 for hidden or visible if hidden corresponding element
- *      prints as ~
- *Or can we create a matrix of other objects where each object has 2 values
+ *Create a matrix of other objects where each object has 2 values
  *      Value, and 1/0 for hidden or visible. Like "point" from quiz
  */
