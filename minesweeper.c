@@ -16,3 +16,33 @@ struct _board {
   int bombs;
   int cleanCells;
 };
+
+static int getVal(board const *bd, int row, int col){
+}
+
+static int setVal(board *vd, int row, int col, int val){
+}
+
+static int getVis(board const *bd, int row, int col){
+}
+
+static int setVis(board *vd, int row, int col, int vis){
+}
+
+int parseArgs(int argc, char *argv[], char mode[]){
+}
+
+board * newBoard(int mode){
+}
+
+board * bombArrangement(board * blank_board){
+}
+
+board * populateCells(board * bomb_board){
+}
+
+int printBoard(board * startB){
+}
+
+int revealCell(int row, int col){
+}
