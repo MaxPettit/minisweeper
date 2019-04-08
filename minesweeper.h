@@ -14,10 +14,10 @@ void deleteBoard(board * bd);
 board * newBoard(int mode);
 
 //randomly arranges bombs
-board * bombArrangement(board * blank_board);
+board * bombArrangement(board * blank_bd);
 
 //fills in nums
-board * populateCells(board * bomb_board); 
+board * populateCells(board * bomb_bd); 
 
 /* Prints a board full of ~
  * Returns -1 if error
