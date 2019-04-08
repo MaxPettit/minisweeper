@@ -44,10 +44,10 @@ int parseArgs(int argc, char *argv[], char mode[]){
 board * newBoard(int mode){
 }
 
-board * bombArrangement(board * blank_board){
+board * bombArrangement(board * blank_bd){
 }
 
-board * populateCells(board * bomb_board){
+board * populateCells(board * bomb_bd){
 }
 
 int printBoard(board * startB){
