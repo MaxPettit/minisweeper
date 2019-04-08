@@ -29,6 +29,15 @@ static int getVis(board const *bd, int row, int col){
 static int setVis(board *vd, int row, int col, int vis){
 }
 
+static void printWin(){
+}
+
+static void printLoss(){
+}
+
+void printUssage(){
+}
+
 int parseArgs(int argc, char *argv[], char mode[]){
 }
 
