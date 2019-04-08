@@ -20,13 +20,13 @@ struct _board {
 static int getVal(board const *bd, int row, int col){
 }
 
-static int setVal(board *vd, int row, int col, int val){
+static int setVal(board *bd, int row, int col, int val){
 }
 
 static int getVis(board const *bd, int row, int col){
 }
 
-static int setVis(board *vd, int row, int col, int vis){
+static int setVis(board *bd, int row, int col, int vis){
 }
 
 static void printWin(){
