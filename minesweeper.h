@@ -21,7 +21,7 @@ board * bombArrangement(board * blank_bd);
 //fills in nums
 board * populateCells(board * bomb_bd); 
 
-/* Prints a board full of ~
+/* Prints current board
  * Returns -1 if error
  * 0 if else
  */
