@@ -25,7 +25,8 @@ board * populateCells(board * bomb_bd);
  */
 int printBoard(board * startB);
 
-/* Prints new board with called cell revealed
+/* Prints board with called cell revealed
+ * Checks vis value for each cell
  * Returns -1 if error
  * 0 if else
  */
