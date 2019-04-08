@@ -23,7 +23,7 @@ board * populateCells(board * bomb_board);
  * Returns -1 if error
  * 0 if else
  */
-int printNewBoard(board * startB);
+int printBoard(board * startB);
 
 /* Prints new board with called cell revealed
  * Returns -1 if error
