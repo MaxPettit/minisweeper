@@ -34,11 +34,11 @@ int revealCell(int row, int col);
 #endif
 
 /* Statics:
+ * GetVal SetVal GetVis SetVis
  * Get Result (when cell is called, test if bomb or not)
- *      Like getE
  * Print Result Message
  * 
- *Other Ideas:
+ *Idea:
  *Create a matrix of other objects where each object has 2 values
  *      Value, and 1/0 for hidden or visible. Like "point" from quiz
  */
