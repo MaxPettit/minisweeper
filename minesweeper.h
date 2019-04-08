@@ -11,7 +11,7 @@ void deleteBoard(board * bd);
 
 /* creates board filled with 0's.
  * mode will determine size and num bombs */
-board * blankBoard(int mode);
+board * newBoard(int mode);
 
 //randomly arranges bombs
 board * bombArrangement(board * blank_board);
