@@ -3,6 +3,8 @@
 
 typedef struct _board board;
 
+void printUssage();
+
 //char mode would take easy, medium, or hard
 int parseArgs(int argc, char *argv[], char mode[]);
 
