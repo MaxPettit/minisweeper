@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #include "minesweeper.h"
 
 typedef struct _cell cell;
@@ -35,10 +35,51 @@ static void printWin(){
 static void printLoss(){
 }
 
-void printUssage(){
+void printUsage(){
+    printf("\n please say 'easy', 'medium', or 'hard' with the name of program to use or type 'instructions' for instructions\n");
 }
 
-int parseArgs(int argc, char *argv[], char mode[]){
+int parseArgs(int argc, char *argv[],board * b){
+  int err;
+  if(argc<2){
+    printUsage;
+    return -1;
+  }
+  else if(argc>2){
+     printUsage;
+     return -1;
+  }else if((err=strcmp("easy",argv[1])==0){
+      b=newBoard(1);
+      if(!b) return -1;
+      else return 0;
+    }
+    else if((err=strcmp("medium",argv[1])==0){
+	b=newBoard(2);
+	if(!b) return -1;
+	else return 0;
+      }
+      else if((err=strcmp("hard",argv[1])==0){
+	  if(!b) return -1;
+	  else return 0;
+	} else if((err=strcmp("instructions",argv[1])==0){
+        printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
+        return 0;
+	else if((err=strcmp("easy",argv[1])!=0){
+	    printUsage;
+	    return -1;
+	  }
+	  else if((err=strcmp("medium",argv[1])!=0){
+	      printUsage;
+	      return -1;
+	    }
+	    else if((err=strcmp("hard",argv[1])!=0){
+		printUsage;
+		return -1;
+	      }
+    else if((err=strcmp("instructions",argv[1]))!=0){
+      printUsage;
+      return -1;
+     }
 }
 
 board * newBoard(int mode){
@@ -49,6 +90,7 @@ board * newBoard(int mode){
   cleanC = len * len - bombs;
   
   b = malloc(sizeof(board));
+    return NULL;
   if(!b) return NULL;
 
   b->bombs = bombs;
@@ -58,7 +100,6 @@ board * newBoard(int mode){
   b->data = malloc(len*len*sizeof(cell));
   if(!b->data){
     free(b);
-    return NULL;
   }
   //set values to 0 and vis to something
   for(i = 0; i < len*len; i++){
