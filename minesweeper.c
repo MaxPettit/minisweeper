@@ -42,6 +42,21 @@ int parseArgs(int argc, char *argv[], char mode[]){
 }
 
 board * newBoard(int mode){
+  int i, bombs, cleanC, len;
+  board * b;
+  //something that sets values len and bombs from mode
+
+  cleanC = len * len - bombs;
+  
+  b = malloc(sizeof(board));
+  if(!b) return NULL;
+
+  b->data = malloc(len*len*sizeof(cell));
+  if(!b->data){
+    free(b);
+    return NULL;
+  }
+  //set values to 0 and vis to something
 }
 
 board * bombArrangement(board * blank_bd){
