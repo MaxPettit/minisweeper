@@ -18,12 +18,14 @@ struct _board {
 };
 
 static int getVal(board const *bd, int row, int col){
+  return bd->data[(col-1) * bd->side + row -1].val;
 }
 
 static int setVal(board *bd, int row, int col, int val){
 }
 
 static int getVis(board const *bd, int row, int col){
+  return bd->data[(col-1) * bd->side + row -1].vis;
 }
 
 static int setVis(board *bd, int row, int col, int vis){
