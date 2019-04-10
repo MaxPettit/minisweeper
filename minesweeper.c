@@ -116,7 +116,19 @@ board * bombArrangement(board * blank_bd){
 board * populateCells(board * bomb_bd){
 }
 
-int printBoard(board * startB){
+int printBoard(board const * bd){
+  int row, col;
+
+  if(!bd) return -1;
+
+  for(row = 1; row <= bd->side; row++){
+    for(col = 1; col <= bd->side; col++){
+       if(getVis(bd, row, col)) printf("%d", getVal(bd, row, col));
+       else printf("~");
+    }
+    printf("\n");
+  }
+  return 0;
 }
 
 int revealCell(int row, int col){
