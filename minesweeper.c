@@ -7,12 +7,12 @@ typedef struct _cell cell;
 
 struct _cell {
   int val;
-  int visiblity;
+  int vis;
 };
 
 struct _board {
-  int size;
-  cell * data; //???
+  int side;
+  cell * data; 
   int bombs;
   int cleanCells;
 };
@@ -51,12 +51,20 @@ board * newBoard(int mode){
   b = malloc(sizeof(board));
   if(!b) return NULL;
 
+  b->bombs = bombs;
+  b->side = len;
+  b->cleanCells = cleanC;
+
   b->data = malloc(len*len*sizeof(cell));
   if(!b->data){
     free(b);
     return NULL;
   }
   //set values to 0 and vis to something
+  for(i = 0; i < len*len; i++){
+    b->data[i]->val = 0; //???
+    b->data[i]->vis = 0; //???
+  }
 }
 
 board * bombArrangement(board * blank_bd){
