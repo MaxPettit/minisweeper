@@ -117,14 +117,18 @@ board * populateCells(board * bomb_bd){
 }
 
 int printBoard(board const * bd){
-  int row, col;
+  int row, col, t;
 
   if(!bd) return -1;
 
   for(row = 1; row <= bd->side; row++){
     for(col = 1; col <= bd->side; col++){
-       if(getVis(bd, row, col)) printf("%3d", getVal(bd, row, col)); 
-       else printf("  ~");
+      if(getVis(bd, row, col)){
+	t = getVal(bd, row, col);
+	if(t >= 0) printf("%3d", t);
+	else printf("  X");
+      }
+       else printf("  ~"); //mess with the "%d" and "~" to make it pretty
     }
     printf("\n");
   }
