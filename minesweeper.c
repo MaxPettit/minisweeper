@@ -22,7 +22,7 @@ static int getVal(board const *bd, int row, int col){
 }
 
 static void setVal(board *bd, int row, int col, int val){
-	bd->data[(col-1)*bd->side+row-1]=val;
+	bd->data[(col-1)*bd->side+row-1].val=val;
 }
 
 static int getVis(board const *bd, int row, int col){
@@ -30,7 +30,7 @@ static int getVis(board const *bd, int row, int col){
 }
 
 static void setVis(board *bd, int row, int col, int vis){
-	bd->data[(col-1) * bd->side + row -1]=vis;
+	bd->data[(col-1) * bd->side + row -1].vis=vis;
 }
 
 static void endWin(){
