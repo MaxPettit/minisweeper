@@ -130,7 +130,9 @@ int printBoard(board const * bd){
   int row, col, t;
 
   if(!bd) return -1;
-
+  for(int i = 1; i <= bd->side; i++)
+    printf("%3c", (i%26+'a'-1));
+  printf("\n");
   for(row = 1; row <= bd->side; row++){
     for(col = 1; col <= bd->side; col++){
       if(getVis(bd, row, col)){
@@ -138,9 +140,9 @@ int printBoard(board const * bd){
 	if(t >= 0) printf("%3d", t);
 	else printf("  X");
       }
-       else printf("  ~"); //mess with the "%d" and "~" to make it pretty
+       else printf("  ~");
     }
-    printf("\n");
+    printf("%3d\n", row);
   }
   return 0;
 }
