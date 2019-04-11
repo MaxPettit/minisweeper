@@ -42,33 +42,11 @@ static void endLoss(){
 }
 
 static int revealZero(){
-  int i, j, t, rSt, rEnd, cSt, cEnd;
-  
-  rSt = row-1;
-  cSt = col-1;
-  rEnd = row + 1;
-  cEnd = col + 1;
-  
-  setVis(bd, row, col, 1);
-  bd->cleanCells--;
-  
-  if(row == 1) rSt = row;
-  if(col == 1) cSt = col;
-  if(row == bd->side) rEnd = row;
-  if(col == bd->side) cEnd = col;
-  
-  for(i = rSt; i <= rEnd; i++){
-    for(j = cSt; j <= cEnd; j++){
-      if(!getVis(bd, i, j)){
-	t = getVal(bd, i, j);
-	if(t == 0) revealZero(bd, i, j);
-	else{
-	  setVis(bd, i, j, 1);
-	  bd->cleanCells--;
-	}
-      }
-    }
-  }
+  /*
+   * Loops over radius of cell setting vis to 1
+   * if val is == 0 and vis == 0, recursive call to 
+   * reveal zero, use same loop method as populate cells
+   */
 }
 
 void printUsage(){
@@ -154,14 +132,18 @@ board * newBoard(int mode){
 }
 
 board * bombArrangement(board * blank_bd,int mode){
-	int bomb,numBombs,i;
+	int bomb,numBombs,i,j;
 	bomb=-1;
 	if(mode==1){
 		numBombs=5;
 	}
 	for(i=0;i<numBombs;i++){
-		//randomizer
-		if(getVal(blank_bd,row,col)==-1) i=i-1;
+		int row=(rand()%(blank_bd->side)+1);
+		int col=(rand()%(blank_bd->side)+1);
+		if(getVal(blank_bd,row,col)==-1) i=i-1; 
+		else setVal(blank_bd,row,col,-1);
+	}
+	return blank_bd;
 }
 
 board * populateCells(board * bomb_bd){
