@@ -90,8 +90,10 @@ int parseArgs(int argc, char *argv[],board * b){
       printUsage;
       return -1;
      }
+ 
+void deleteBoard(board *bd){
 }
-
+		    
 board * newBoard(int mode){
   int i, bombs, cleanC, len;
   board * b;
