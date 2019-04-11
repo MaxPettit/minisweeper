@@ -16,7 +16,7 @@ void deleteBoard(board * bd);
 board * newBoard(int mode);
 
 //randomly arranges bombs
-board * bombArrangement(board * blank_bd);
+board * bombArrangement(board * blank_bd, int mode);
 
 //fills in nums
 board * populateCells(board * bomb_bd); 
