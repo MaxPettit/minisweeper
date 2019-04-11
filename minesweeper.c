@@ -56,11 +56,11 @@ void printUsage(){
 int parseArgs(int argc, char *argv[],board * b){
   int err;
   if(argc<2){
-    printUsage;
+    printUsage();
     return -1;
   }
   else if(argc>2){
-     printUsage;
+     printUsage();
      return -1;
   }else if((err=strcmp("easy",argv[1])==0){
       b=newBoard(1);
@@ -79,19 +79,19 @@ int parseArgs(int argc, char *argv[],board * b){
         printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
         return 0;
 	else if((err=strcmp("easy",argv[1])!=0){
-	    printUsage;
+	    printUsage();
 	    return -1;
 	  }
 	  else if((err=strcmp("medium",argv[1])!=0){
-	      printUsage;
+	      printUsage();
 	      return -1;
 	    }
 	    else if((err=strcmp("hard",argv[1])!=0){
-		printUsage;
+		printUsage();
 		return -1;
 	      }
     else if((err=strcmp("instructions",argv[1]))!=0){
-      printUsage;
+      printUsage();
       return -1;
      }
  
