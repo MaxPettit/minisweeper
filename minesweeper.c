@@ -38,6 +38,11 @@ static void endLoss(){
 }
 
 static int revealZero(){
+  /*
+   * Loops over radius of cell setting vis to 1
+   * if val is == 0 and vis == 0, recursive call to 
+   * reveal zero, use same loop method as populate cells
+   */
 }
 
 void printUsage(){
