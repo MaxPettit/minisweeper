@@ -32,9 +32,11 @@ static void setVis(board *bd, int row, int col, int vis){
 }
 
 static void endWin(){
+// 	final submission
 }
 
 static void endLoss(){
+// 	final submission
 }
 
 static int revealZero(){
