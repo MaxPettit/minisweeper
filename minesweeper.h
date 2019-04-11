@@ -32,7 +32,7 @@ int printBoard(board const * startB);
  * Returns -1 if error
  * 0 if else
  */
-int revealCell(int row, int col);
+int revealCell(board *bd, int row, int col);
 
 #endif
 
