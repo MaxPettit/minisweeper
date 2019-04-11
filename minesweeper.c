@@ -117,10 +117,10 @@ board * newBoard(int mode){
   if(!b->data){
     free(b);
   }
-  //set values to 0 and vis to something
+	
   for(i = 0; i < len*len; i++){
-    b->data[i].val = 0; //???
-    b->data[i].vis = 0; //???
+    b->data[i].val = 0; 
+    b->data[i].vis = 0; 
   }
 }
 
