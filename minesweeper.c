@@ -124,7 +124,7 @@ board * newBoard(int mode){
   }
 }
 
-board * bombArrangement(board * blank_bd){
+board * bombArrangement(board * blank_bd, int mode){
 }
 
 board * populateCells(board * bomb_bd){
