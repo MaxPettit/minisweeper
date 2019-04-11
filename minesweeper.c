@@ -37,6 +37,9 @@ static void endWin(){
 static void endLoss(){
 }
 
+static int revealZero(){
+}
+
 void printUsage(){
     printf("\n please say 'easy', 'medium', or 'hard' with the name of program to use or type 'instructions' for instructions\n");
 }
