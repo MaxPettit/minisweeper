@@ -31,10 +31,10 @@ static int getVis(board const *bd, int row, int col){
 static void setVis(board *bd, int row, int col, int vis){
 }
 
-static void printWin(){
+static void endWin(){
 }
 
-static void printLoss(){
+static void endLoss(){
 }
 
 void printUsage(){
