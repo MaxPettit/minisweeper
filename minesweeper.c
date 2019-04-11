@@ -123,8 +123,8 @@ int printBoard(board const * bd){
 
   for(row = 1; row <= bd->side; row++){
     for(col = 1; col <= bd->side; col++){
-       if(getVis(bd, row, col)) printf("%d", getVal(bd, row, col)); //mess with the "%d" and "~" to make it pretty
-       else printf("~");
+       if(getVis(bd, row, col)) printf("%3d", getVal(bd, row, col)); 
+       else printf("  ~");
     }
     printf("\n");
   }
