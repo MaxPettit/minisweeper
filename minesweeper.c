@@ -131,5 +131,5 @@ int printBoard(board const * bd){
   return 0;
 }
 
-int revealCell(int row, int col){
+int revealCell(board *bd, int row, int col){
 }
