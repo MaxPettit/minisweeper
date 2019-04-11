@@ -53,7 +53,7 @@ void printUsage(){
     printf("\n please say 'easy', 'medium', or 'hard' with the name of program to use or type 'instructions' for instructions\n");
 }
 
-int parseArgs(int argc, char *argv[],board * b){
+int parseArgs(int argc, char *argv[],board * b,int *mode){
   int err;
   if(argc<2){
     printUsage();
@@ -64,16 +64,19 @@ int parseArgs(int argc, char *argv[],board * b){
      return -1;
   }else if((err=strcmp("easy",argv[1])==0){
       b=newBoard(1);
+	  *mode=1;
       if(!b) return -1;
       else return 0;
     }
     else if((err=strcmp("medium",argv[1])==0){
 	b=newBoard(2);
+	    *mode=2;
 	if(!b) return -1;
 	else return 0;
       }
       else if((err=strcmp("hard",argv[1])==0){
 	  if(!b) return -1;
+	      *mode=3;
 	  else return 0;
 	} else if((err=strcmp("instructions",argv[1])==0){
         printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
@@ -96,6 +99,10 @@ int parseArgs(int argc, char *argv[],board * b){
      }
  
 void deleteBoard(board *bd){
+	if(bd){
+		free(bd->data);
+		free(bd);
+	}
 }
 		    
 board * newBoard(int mode){
@@ -124,7 +131,15 @@ board * newBoard(int mode){
   }
 }
 
-board * bombArrangement(board * blank_bd, int mode){
+board * bombArrangement(board * blank_bd,int mode){
+	int bomb,numBombs,i;
+	bomb=-1;
+	if(mode==1){
+		numBombs=5;
+	}
+	for(i=0;i<numBombs;i++){
+		//randomizer
+		if(getVal(blank_bd,row,col)==-1) i=i-1;
 }
 
 board * populateCells(board * bomb_bd){
