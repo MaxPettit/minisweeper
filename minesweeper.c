@@ -42,11 +42,33 @@ static void endLoss(){
 }
 
 static int revealZero(){
-  /*
-   * Loops over radius of cell setting vis to 1
-   * if val is == 0 and vis == 0, recursive call to 
-   * reveal zero, use same loop method as populate cells
-   */
+  int i, j, t, rSt, rEnd, cSt, cEnd;
+  
+  rSt = row-1;
+  cSt = col-1;
+  rEnd = row + 1;
+  cEnd = col + 1;
+  
+  setVis(bd, row, col, 1);
+  bd->cleanCells--;
+  
+  if(row == 1) rSt = row;
+  if(col == 1) cSt = col;
+  if(row == bd->side) rEnd = row;
+  if(col == bd->side) cEnd = col;
+  
+  for(i = rSt; i <= rEnd; i++){
+    for(j = cSt; j <= cEnd; j++){
+      if(!getVis(bd, i, j)){
+	t = getVal(bd, i, j);
+	if(t == 0) revealZero(bd, i, j);
+	else{
+	  setVis(bd, i, j, 1);
+	  bd->cleanCells--;
+	}
+      }
+    }
+  }
 }
 
 void printUsage(){
