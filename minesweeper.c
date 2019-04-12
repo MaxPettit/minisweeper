@@ -131,7 +131,7 @@ board * newBoard(int mode){
 }
 
 board * bombArrangement(board * blank_bd, int mode){
-	int numBombs,i,j;
+	int numBombs, i;
 	srand(time(0));
 	if(mode==1){
 		numBombs=5;
