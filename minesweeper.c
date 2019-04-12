@@ -113,7 +113,6 @@ board * newBoard(int mode){
   cleanC = len * len - bombs;
   
   b = malloc(sizeof(board));
-    return NULL;
   if(!b) return NULL;
 
   b->bombs = bombs;
