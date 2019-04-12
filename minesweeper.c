@@ -130,7 +130,7 @@ board * newBoard(int mode){
   }
 }
 
-board * bombArrangement(board * blank_bd,int mode){
+board * bombArrangement(board * blank_bd, int mode){
 	int bomb,numBombs,i,j;
 	bomb=-1;
 	if(mode==1){
