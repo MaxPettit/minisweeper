@@ -173,10 +173,6 @@ int revealCell(board *bd, int row, int col){
 	if(!bd) return -1;
   if(row < 0 || col < 0 || row > bd->side || col > bd->side) return -1;
   int t, err = 0;
-  bd->data[(col-1) * bd->side + row -1].val = 0;//remove
-  bd->data[(col-1+1) * bd->side + row -1].val = 0;//remove
-  bd->data[(col) * bd->side + row].val = 0;//remove
-  bd->data[(col) * bd->side + row+1].val = 0;//remove
   
   setVis(bd, row, col, 1);
   t = getVal(bd, row, col);
