@@ -153,6 +153,7 @@ board * newBoard(int mode){
 }
 
 board * bombArrangement(board * blank_bd, int mode){
+	if(!blank_bd) return NULL;
 	int numBombs, i;
 	srand(time(0));
 	if(mode==1){
@@ -192,7 +193,7 @@ int printBoard(board const * bd){
 }
 
 int revealCell(board *bd, int row, int col){
-	if(!bd) return -1;
+  if(!bd) return -1;
   if(row < 0 || col < 0 || row > bd->side || col > bd->side) return -1;
   int t, err = 0;
   
