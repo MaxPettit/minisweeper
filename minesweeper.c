@@ -164,9 +164,9 @@ board * bombArrangement(board * blank_bd, int mode){
 	if(!blank_bd) return NULL;
 	int numBombs, i;
 	srand(time(0));
-	if(mode==1){
-		numBombs=5;
-	}
+	if(mode==1)numBombs=5;
+  	if(mode == 2) numBombs = 6;
+  	if(mode == 3) numBombs = 7;
 	for(i=0;i<numBombs;i++){
 		int row=(rand()%(blank_bd->side)+1);
 		int col=(rand()%(blank_bd->side)+1);
