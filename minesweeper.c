@@ -169,6 +169,31 @@ board * bombArrangement(board * blank_bd, int mode){
 }
 
 board * populateCells(board * bomb_bd){
+	int row,col,cnt,j;
+	cnt=0;
+	for(row=1;row<=bomb_bd->side;row++){
+		for(col=1;row<=bomb_bd->side;col++){
+			if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+				cnt++;
+			else if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+				cnt++;
+			else if(getVal(bomb_bd,row+1,col+1)==-1)
+				cnt++;
+			else if(getVal(bomb_bd,row-1,col)==-1)
+				cnt++;
+			else if(getVal(bomb_bd,row,col-1)==-1)
+				cnt++;
+			else if(getVal(bomb_bd,row-1,col-1)==-1)
+				cnt++;
+			else if(getVal(bomb_bd,row-1,col+1)==-1)
+				cnt++;
+			else if(getVal(bomb_bd,row+1,col-1)==-1)
+				cnt++;
+			if(getVal(bomb_bd,row,col)!=-1)
+				setVal(bomb_bd,row,col,cnt);
+		}
+	}
+	return bomb_bd;
 }
 
 int printBoard(board const * bd){
