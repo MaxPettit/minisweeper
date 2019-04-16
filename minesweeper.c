@@ -58,25 +58,17 @@ static int revealZero(){
   if(col == bd->side) cEnd = col;
   
   for(i = rSt; i <= rEnd; i++){
-    if(!getVis(bd, i, col)){
-	t = getVal(bd, i, col);
-	if(t == 0) revealZero(bd, i, col);
+    for(j = cSt; j <= cEnd; j++){
+      if(!getVis(bd, i, j)){
+	t = getVal(bd, i, j);
+	if(t == 0) revealZero(bd, i, j);
 	else{
-	  setVis(bd, i, col, 1);
+	  setVis(bd, i, j, 1);
 	  bd->cleanCells--;
 	}
-     }
-   }
-  for(j = cSt; j <= cEnd; j++){
-    if(!getVis(bd, row, j)){
-	t = getVal(bd, row, j);
-	if(t == 0) revealZero(bd, row, j);
-	else{
-	  setVis(bd, row, j, 1);
-	  bd->cleanCells--;
-	}
-     }
-   }
+      }
+    }
+  }
 }
 
 void printUsage(){
