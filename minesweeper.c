@@ -41,7 +41,7 @@ static void endLoss(){
 // 	final submission
 }
 
-static int revealZero(){
+static int revealZero(board *bd, int row, int col){
   int i, j, t, rSt, rEnd, cSt, cEnd;
   
   rSt = row-1;
