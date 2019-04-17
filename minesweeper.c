@@ -130,7 +130,17 @@ void deleteBoard(board *bd){
 board * newBoard(int mode){
   int i, bombs, cleanC, len;
   board * b;
-  //something that sets values len and bombs from mode
+	
+  if(mode == 1){ //all of these #'s are just placeholders
+    len = 6;
+    bombs = 6;
+  } else if(mode == 2){
+    len = 7;
+    bombs = 12;
+  } else if(mode == 3){
+    len = 8;
+    bombs = 18;
+  }
 
   cleanC = len * len - bombs;
   
@@ -144,6 +154,7 @@ board * newBoard(int mode){
   b->data = malloc(len*len*sizeof(cell));
   if(!b->data){
     free(b);
+    return NULL;
   }
 	
   for(i = 0; i < len*len; i++){
