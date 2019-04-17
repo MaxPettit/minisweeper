@@ -168,8 +168,8 @@ board * bombArrangement(board * blank_bd, int mode){
 	int numBombs, i;
 	srand(time(0));
 	if(mode==1)numBombs=5;
-  	if(mode == 2) numBombs = 6;
-  	if(mode == 3) numBombs = 7;
+	if(mode == 2) numBombs = 6;
+	if(mode == 3) numBombs = 7;
 	for(i=0;i<numBombs;i++){
 		int row=(rand()%(blank_bd->side)+1);
 		int col=(rand()%(blank_bd->side)+1);
@@ -186,19 +186,19 @@ board * populateCells(board * bomb_bd){
 		for(col=1;row<=bomb_bd->side;col++){
 			if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
 				cnt++;
-			else if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+			if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
 				cnt++;
-			else if(getVal(bomb_bd,row+1,col+1)==-1)
+			if(getVal(bomb_bd,row+1,col+1)==-1)
 				cnt++;
-			else if(getVal(bomb_bd,row-1,col)==-1)
+			if(getVal(bomb_bd,row-1,col)==-1)
 				cnt++;
-			else if(getVal(bomb_bd,row,col-1)==-1)
+			if(getVal(bomb_bd,row,col-1)==-1)
 				cnt++;
-			else if(getVal(bomb_bd,row-1,col-1)==-1)
+			if(getVal(bomb_bd,row-1,col-1)==-1)
 				cnt++;
-			else if(getVal(bomb_bd,row-1,col+1)==-1)
+			if(getVal(bomb_bd,row-1,col+1)==-1)
 				cnt++;
-			else if(getVal(bomb_bd,row+1,col-1)==-1)
+			if(getVal(bomb_bd,row+1,col-1)==-1)
 				cnt++;
 			if(getVal(bomb_bd,row,col)!=-1)
 				setVal(bomb_bd,row,col,cnt);
