@@ -41,7 +41,7 @@ static void endLoss(){
 // 	final submission
 }
 
-static int revealZero(board *bd, int row, int col){
+static void revealZero(board *bd, int row, int col){
   int i, j, t, rSt, rEnd, cSt, cEnd;
   
   rSt = row-1;
@@ -161,6 +161,7 @@ board * newBoard(int mode){
     b->data[i].val = 0; 
     b->data[i].vis = 0; 
   }
+  return b;
 }
 
 board * bombArrangement(board * blank_bd, int mode){
