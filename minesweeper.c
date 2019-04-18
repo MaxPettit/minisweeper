@@ -76,49 +76,33 @@ void printUsage(){
 }
 
 int parseArgs(int argc, char *argv[],board * b,int *mode){
+  int parseArgs(int argc, char *argv[], int *mode){
   int err;
-  if(argc<2){
+  if(argc != 2){
     printUsage();
     return -1;
   }
-  else if(argc>2){
-     printUsage();
-     return -1;
-  }else if((err=strcmp("easy",argv[1])==0){
-      b=newBoard(1);
-	  *mode=1;
-      if(!b) return -1;
-      else return 0;
-    }
-    else if((err=strcmp("medium",argv[1])==0){
-	b=newBoard(2);
-	    *mode=2;
-	if(!b) return -1;
-	else return 0;
-      }
-      else if((err=strcmp("hard",argv[1])==0){
-	  if(!b) return -1;
-	      *mode=3;
-	  else return 0;
-	} else if((err=strcmp("instructions",argv[1])==0){
-        printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
-        return 0;
-	else if((err=strcmp("easy",argv[1])!=0){
-	    printUsage();
-	    return -1;
-	  }
-	  else if((err=strcmp("medium",argv[1])!=0){
-	      printUsage();
-	      return -1;
-	    }
-	    else if((err=strcmp("hard",argv[1])!=0){
-		printUsage();
-		return -1;
-	      }
-    else if((err=strcmp("instructions",argv[1]))!=0){
-      printUsage();
-      return -1;
-     }
+  else if((err = strcmp("easy", argv[1]) == 0)){
+    *mode = 1;
+    return 0;
+  }
+  else if((err = strcmp("medium", argv[1]) == 0)){
+    *mode = 2;
+    return 0;
+  }
+  else if((err = strcmp("hard",argv[1]) == 0)){
+    *mode = 3;
+    return 0;
+  }
+  else if((err = strcmp("instructions", argv[1]) == 0)){
+    printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
+    return 0;
+  }
+  else{
+    printUsage();
+    return -1;
+  }
+}
  
 void deleteBoard(board *bd){
 	if(bd){
@@ -181,106 +165,106 @@ board * bombArrangement(board * blank_bd, int mode){
 }
 
 board * populateCells(board * bomb_bd){
-	int row,col,cnt,j;
-	cnt=0;
-	for(row=1;row<=bomb_bd->side;row++){
-		for(col=1;row<=bomb_bd->side;col++){
-			cnt=0;
-			if(row==bomb_bd->side){
-				if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-					cnt++;
-				if(getVal(bomb_bd,row-1,col)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col+1)==-1)
-					cnt++;
-			}else if(col==bomb_bd->side){
-				if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-					cnt++;
-				if(getVal(bomb_bd,row-1,col)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row+1,col-1)==-1)
-					cnt++;
-			}else if(col==1&&row==1){
-				if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-					cnt++;
-				if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-					cnt++;
-				if(getVal(bomb_bd,row+1,col+1)==-1)
-					cnt++;
-			}else if(col==bomb_bd->side&&row=1){
-				if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-					cnt++;
-				if(getVal(bomb_bd,row,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row+1,col-1)==-1)
-					cnt++;
-			}else if(col==bomb_bd->side&&row==bomb_bd->side){
-				if(getVal(bomb_bd,row-1,col)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col-1)==-1)
-					cnt++;
-			}else if(col==1&&row==bomb_bd->side){
-				if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-					cnt++;
-				if(getVal(bomb_bd,row-1,col)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col+1)==-1)
-					cnt++;
-			}else if(row==1){
-				if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-					cnt++;
-				if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-					cnt++;
-				if(getVal(bomb_bd,row+1,col+1)==-1)
-					cnt++:
-				if(getVal(bomb_bd,row,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row+1,col-1)==-1)
-					cnt++;
-			}else if(col==1){
-				if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-					cnt++;
-				if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-					cnt++;
-				if(getVal(bomb_bd,row+1,col+1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col+1)==-1)
-					cnt++;
-			}else {
-				if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-					cnt++;
-				if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-					cnt++;
-				if(getVal(bomb_bd,row+1,col+1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row-1,col+1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row+1,col-1)==-1)
-					cnt++;
-				if(getVal(bomb_bd,row,col)!=-1)
-			}
-				setVal(bomb_bd,row,col,cnt);
-		}
-	}
-	return bomb_bd;
+  int row,col,cnt;
+  cnt=0;
+  for(row=1;row<=bomb_bd->side;row++){
+    for(col=1;row<=bomb_bd->side;col++){
+      cnt=0;
+      if(row==bomb_bd->side){
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col+1)==-1)
+	  cnt++;
+      }else if(col==bomb_bd->side){
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col-1)==-1)
+	  cnt++;
+      }else if(col==1&&row==1){
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col+1)==-1)
+	  cnt++;
+      }else if(col==bomb_bd->side&&row==1){
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col-1)==-1)
+	  cnt++;
+      }else if(col==bomb_bd->side&&row==bomb_bd->side){
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col-1)==-1)
+	  cnt++;
+      }else if(col==1&&row==bomb_bd->side){
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col+1)==-1)
+	  cnt++;
+      }else if(row==1){
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col+1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col-1)==-1)
+	  cnt++;
+      }else if(col==1){
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col+1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col+1)==-1)
+	  cnt++;
+      }else {
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col+1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col+1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col-1)==-1)
+	  cnt++;
+      }
+	if(getVal(bomb_bd,row,col)!=-1)
+      setVal(bomb_bd,row,col,cnt);
+    }
+  }
+  return bomb_bd;
 }
 
 int printBoard(board const * bd){
