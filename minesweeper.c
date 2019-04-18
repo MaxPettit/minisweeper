@@ -220,8 +220,7 @@ board * populateCells(board * bomb_bd){
 	  cnt++;
 	if(getVal(bomb_bd,row-1,col+1)==-1)
 	  cnt++;
-      }
-	    else if(row==bomb_bd->side){
+      }else if(row==bomb_bd->side){
 	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
 	  cnt++;
 	if(getVal(bomb_bd,row-1,col)==-1)
