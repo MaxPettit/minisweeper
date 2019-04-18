@@ -74,9 +74,7 @@ static void revealZero(board *bd, int row, int col){
 void printUsage(){
     printf("\n please say 'easy', 'medium', or 'hard' with the name of program to use or type 'instructions' for instructions\n");
 }
-
-int parseArgs(int argc, char *argv[],board * b,int *mode){
-  int parseArgs(int argc, char *argv[], int *mode){
+int parseArgs(int argc, char *argv[], int *mode){
   int err;
   if(argc != 2){
     printUsage();
@@ -165,6 +163,7 @@ board * bombArrangement(board * blank_bd, int mode){
 }
 
 board * populateCells(board * bomb_bd){
+if(!bomb_bd) return NULL;
   int row,col,cnt;
   cnt=0;
   for(row=1;row<=bomb_bd->side;row++){
