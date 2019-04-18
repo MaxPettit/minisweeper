@@ -170,29 +170,7 @@ board * populateCells(board * bomb_bd){
   for(row=1;row<=bomb_bd->side;row++){
     for(col=1;row<=bomb_bd->side;col++){
       cnt=0;
-      if(row==bomb_bd->side){
-	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
-	  cnt++;
-	if(getVal(bomb_bd,row-1,col)==-1)
-	  cnt++;
-	if(getVal(bomb_bd,row,col-1)==-1)
-	  cnt++;
-	if(getVal(bomb_bd,row-1,col-1)==-1)
-	  cnt++;
-	if(getVal(bomb_bd,row-1,col+1)==-1)
-	  cnt++;
-      }else if(col==bomb_bd->side){
-	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
-	  cnt++;
-	if(getVal(bomb_bd,row-1,col)==-1)
-	  cnt++;
-	if(getVal(bomb_bd,row,col-1)==-1)
-	  cnt++;
-	if(getVal(bomb_bd,row-1,col-1)==-1)
-	  cnt++;
-	if(getVal(bomb_bd,row+1,col-1)==-1)
-	  cnt++;
-      }else if(col==1&&row==1){
+      if(col==1&&row==1){
 	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
 	  cnt++;
 	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
@@ -241,6 +219,29 @@ board * populateCells(board * bomb_bd){
 	if(getVal(bomb_bd,row-1,col)==-1)
 	  cnt++;
 	if(getVal(bomb_bd,row-1,col+1)==-1)
+	  cnt++;
+      }
+	    else if(row==bomb_bd->side){
+	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col+1)==-1)
+	  cnt++;
+      }else if(col==bomb_bd->side){
+	if(getVal(bomb_bd,row+1,col)==-1) //checks if bombs are anywhere around spot
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row-1,col-1)==-1)
+	  cnt++;
+	if(getVal(bomb_bd,row+1,col-1)==-1)
 	  cnt++;
       }else {
 	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
