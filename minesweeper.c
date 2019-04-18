@@ -167,7 +167,7 @@ if(!bomb_bd) return NULL;
   int row,col,cnt;
   cnt=0;
   for(row=1;row<=bomb_bd->side;row++){
-    for(col=1;row<=bomb_bd->side;col++){
+    for(col=1;col<=bomb_bd->side;col++){
       cnt=0;
       if(col==1&&row==1){
 	if(getVal(bomb_bd,row,col+1)==-1) //if this fails because there is no check for 
