@@ -41,7 +41,7 @@ static void endWin(board * bd){
     }
   }
   printBoard(bd);
-  printf("/n YOU WIN!!!!!!!!!, would you like to play again?\n");
+  printf("YOU WIN!!!!!!!!!, would you like to play again?\n");
 }
 
 static void endLoss(board * bd){
@@ -52,7 +52,7 @@ static void endLoss(board * bd){
     }
   }
   printBoard(bd);
-  printf("/n YOU LOSE!! :(, would you like to play again?\n");
+  printf("YOU LOSE!! :(, would you like to play again?\n");
 }
 
 static void revealZero(board *bd, int row, int col){
