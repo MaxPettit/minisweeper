@@ -37,7 +37,20 @@ int main(int argc, char *argv[]){
       }
       }
     }
-    //play again newGame = 1;
+	  
+    ret = scanf("%s", s);
+    if(strcmp("easy", s) == 0){
+      newGame = 1;
+      mode = 1;
+    }
+    if(strcmp("medium", s) == 0){
+      newGame = 1;
+      mode = 2;
+    }
+    if(strcmp("hard", s) == 0){
+      newGame = 1;
+      mode = 3;
+    }
   }
   
   deleteBoard(b);
