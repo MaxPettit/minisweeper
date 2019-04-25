@@ -24,6 +24,9 @@ int main(int argc, char *argv[]){
     while(1){
       ret = scanf();
       col = (c - 'a')%26 +1;
+      if(r <= 0 || col < 1 || r > mode + 5|| col > mode + 5){
+	printf("Try again\n");
+      }
       err = revealCell(b, r, col)
       if(err == 2) break;
     }
