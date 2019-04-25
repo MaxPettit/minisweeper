@@ -294,13 +294,20 @@ int revealCell(board *bd, int row, int col){
   setVis(bd, row, col, 1);
   t = getVal(bd, row, col);
   printf("\n");
-  if(t < 0) endLoss();
+  if(t < 0){
+    err = printBoard(bd);
+    endLoss(bd);
+    return 2;
+  }
   else if(t > 0) bd->cleanCells--;
   else revealZero(bd, row, col);
   
-  if(bd->cleanCells == 0) endWin();
+  if(bd->cleanCells == 0) {
+    endWin(bd);
+    return 2;
+  }
   
   err = printBoard(bd);
-
   return err;
 }
+
