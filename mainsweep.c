@@ -23,29 +23,21 @@ int main(int argc, char *argv[]){
     err = printBoard(b); assert(!err);
 
     while(1){
-      ret = scanf("%s",&c);
-      if(ret!=1) 
+      ret=0;
+      ret = scanf("%c",&c);
+      if(ret==1){ 
       col = (c - 'a')%26 +1;
       ret= scanf("%d",&r);
+      if(ret==1){
       if(r <= 0 || col < 1 || r > mode + 5|| col > mode + 5){
 	printf("Try again\n");
       }
       err = revealCell(b, r, col);
       if(err == 2) break;
+      }
+      }
     }
-    ret = scanf("%s", s);
-    if(strcmp("easy", s) == 0){
-      newGame = 1;
-      mode = 1;
-    }
-    if(strcmp("medium", s) == 0){
-      newGame = 1;
-      mode = 2;
-    }
-    if(strcmp("hard", s) == 0){
-      newGame = 1;
-      mode = 3;
-    }
+    //play again newGame = 1;
   }
   
   deleteBoard(b);
