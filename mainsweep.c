@@ -34,6 +34,7 @@ int main(int argc, char *argv[]){
 	printf("Try again\n");
       }
       err = revealCell(b, r, col);
+      if(err == 1) printf("Already opened. Try again\n");
       if(err == 2) break;
       }
       }
