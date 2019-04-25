@@ -23,7 +23,8 @@ int main(int argc, char *argv[]){
 
     while(1){
       ret = scanf();
-      err = revealCell(b, 2, 4); assert(!err);
+      col = (c - 'a')%26 +1;
+      err = revealCell(b, r, col)
       if(err == 2) break;
     }
     //play again newGame = 1;
