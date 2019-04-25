@@ -40,9 +40,9 @@ static void endWin(board * bd){
       setVis(bd,i,j,1);
     }
   }
-  printf("\n");
+printf("\n YOU WIN!!!!!!!!!, would you like to play again?\n");
   printBoard(bd);
-  printf("YOU WIN!!!!!!!!!, enter new mode to play again or n to quit\n");
+  
 }
 
 static void endLoss(board * bd){
@@ -52,9 +52,9 @@ static void endLoss(board * bd){
       setVis(bd,i,j,1);
     }
   }
-  printf("\n");
+printf("\n YOU LOSE!! :(, would you like to play again?\n");
   printBoard(bd);
-  printf("YOU LOSE!! :(, enter new mode to play again or n to quit\n");
+  
 }
 
 static void revealZero(board *bd, int row, int col){
@@ -88,7 +88,7 @@ static void revealZero(board *bd, int row, int col){
 }
 
 void printUsage(){
-    printf("\n please say 'easy', 'medium', or 'hard' with the name of program to use or type 'instructions' for instructions\n");
+    printf("\n please say 'easy', 'medium', or 'hard' with the name of program to use or type 'instructions' for instructions or 'demo'\n");
 }
 int parseArgs(int argc, char *argv[], int *mode){
   int err;
@@ -112,6 +112,10 @@ int parseArgs(int argc, char *argv[], int *mode){
     printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
     return 0;
   }
+	else if((err==strcmp("demo", argv[1]) == 0)){
+		*mode=4;
+		return 0;
+	}
   else{
     printUsage();
     return -1;
@@ -131,13 +135,16 @@ board * newBoard(int mode){
 	
   if(mode == 1){ //all of these #'s are just placeholders
     len = 6;
-    bombs = 6;
+    bombs = 5;
   } else if(mode == 2){
     len = 7;
-    bombs = 12;
+    bombs = 7;
   } else if(mode == 3){
     len = 8;
-    bombs = 18;
+    bombs = 10;
+  } else if(mode == 4){
+	  len = 4;
+	  bombs = 2;
   }
 
   cleanC = len * len - bombs;
@@ -165,9 +172,10 @@ board * newBoard(int mode){
 board * bombArrangement(board * blank_bd, int mode){
 	if(!blank_bd) return NULL;
 	int numBombs, i;
-	if(mode==1)numBombs=5;
-	if(mode == 2) numBombs = 6;
-	if(mode == 3) numBombs = 7;
+	if(mode == 1) numBombs = 5;
+	if(mode == 2) numBombs = 7;
+	if(mode == 3) numBombs = 10;
+	if(mode == 4) numBombs = 2;
 	for(i=0;i<numBombs;i++){
 		int row=(rand()%(blank_bd->side)+1);
 		int col=(rand()%(blank_bd->side)+1);
