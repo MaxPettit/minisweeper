@@ -4,11 +4,31 @@
 
 #include "minesweeper.h"
 
-int main(void){
+int main(int argc, char *argv[]){
   board *b;
-  int mode = 1, err;
+  int mode, err, newGame = 1, ret;
+  mode = 1;
+  sran(time(0));
 
-  b = newBoard(mode);
-  err = printBoard(b); assert(!err);
+  err = parseArgs(argc, argv, &mode);
+  if(err) return -1;
+
+  while(newGame == 1){
+    newGame = 0;
+    
+    b = newBoard(mode);
+    b = bombArrangement(b, mode);
+    b = populateCells(b);
+    err = printBoard(b); assert(!err);
+
+    while(1){
+      ret = scanf();
+      err = revealCell(b, 2, 4); assert(!err);
+      if(err == 2) break;
+    }
+    //play again newGame = 1;
+  };
+  
+  deleteBoard(b);
   return 0;
 }
