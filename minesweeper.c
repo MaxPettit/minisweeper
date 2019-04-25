@@ -40,8 +40,9 @@ static void endWin(board * bd){
       setVis(bd,i,j,1);
     }
   }
+  printf("\n");
   printBoard(bd);
-  printf("YOU WIN!!!!!!!!!, would you like to play again?\n");
+  printf("YOU WIN!!!!!!!!!, enter new mode to play again or n to quit\n");
 }
 
 static void endLoss(board * bd){
@@ -51,8 +52,9 @@ static void endLoss(board * bd){
       setVis(bd,i,j,1);
     }
   }
+  printf("\n");
   printBoard(bd);
-  printf("YOU LOSE!! :(, would you like to play again?\n");
+  printf("YOU LOSE!! :(, enter new mode to play again or n to quit\n");
 }
 
 static void revealZero(board *bd, int row, int col){
