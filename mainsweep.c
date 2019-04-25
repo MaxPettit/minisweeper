@@ -8,7 +8,7 @@ int main(int argc, char *argv[]){
   board *b;
   int mode, err, newGame = 1, ret;
   mode = 1;
-  sran(time(0));
+  srand(time(0));
 
   err = parseArgs(argc, argv, &mode);
   if(err) return -1;
