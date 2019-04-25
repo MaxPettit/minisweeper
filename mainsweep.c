@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
       ret= scanf("%d",&r);
       if(ret==1){
       if(r <= 0 || col < 1 || r > mode + 5|| col > mode + 5){
-	printf("Try again\n");
+	printf("Invalid input. Try again\n");
       }
       err = revealCell(b, r, col);
       if(err == 1) printf("Already opened. Try again\n");
