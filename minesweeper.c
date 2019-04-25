@@ -33,12 +33,26 @@ static void setVis(board *bd, int row, int col, int vis){
 	bd->data[(col-1) * bd->side + row -1].vis=vis;
 }
 
-static void endWin(){
-// 	final submission
+static void endWin(board * bd){
+  int i,j;
+  for(i=1;i<= bd->side;i++){
+    for(j=1; j<= bd->side; j++){
+      setVis(bd,i,j,1);
+    }
+  }
+  printBoard(bd);
+  printf("/n YOU WIN!!!!!!!!!, would you like to play again?\n");
 }
 
-static void endLoss(){
-// 	final submission
+static void endLoss(board * bd){
+  int i,j;
+  for(i=1;i<= bd->side;i++){
+    for(j=1; j<= bd->side; j++){
+      setVis(bd,i,j,1);
+    }
+  }
+  printBoard(bd);
+  printf("/n YOU LOSE!! :(, would you like to play again?\n");
 }
 
 static void revealZero(board *bd, int row, int col){
