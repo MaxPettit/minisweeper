@@ -305,6 +305,8 @@ int revealCell(board *bd, int row, int col){
   if(row < 0 || col < 0 || row > bd->side || col > bd->side) return -1;
   int t, err = 0;
   
+  if(getVis(bd, row, col) == 1) return 0;	
+  	
   setVis(bd, row, col, 1);
   t = getVal(bd, row, col);
   printf("\n");
