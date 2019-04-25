@@ -32,7 +32,7 @@ int main(int argc, char *argv[]){
       }
     }
     //play again newGame = 1;
-  };
+  }
   
   deleteBoard(b);
   return 0;
