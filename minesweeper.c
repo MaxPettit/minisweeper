@@ -40,7 +40,7 @@ static void endWin(board * bd){
       setVis(bd,i,j,1);
     }
   }
-printf("\n YOU WIN!!!!!!!!!, would you like to play again? Type mode\n");
+  printf("\n YOU WIN!!!!!!!!!, would you like to play again? Type mode\n");
   printBoard(bd);
   
 }
@@ -52,7 +52,7 @@ static void endLoss(board * bd){
       setVis(bd,i,j,1);
     }
   }
-printf("\n YOU LOSE!! :(, would you like to play again? Type mode\n");
+  printf("\n YOU LOSE!! :( would you like to play again? Type mode\n");
   printBoard(bd);
   
 }
@@ -112,10 +112,10 @@ int parseArgs(int argc, char *argv[], int *mode){
     printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
     return 0;
   }
-	else if((err = strcmp("demo", argv[1]) == 0)){
-		*mode=4;
-		return 0;
-	}
+  else if((err = strcmp("demo", argv[1]) == 0)){
+    *mode=4;
+    return 0;
+  }
   else{
     printUsage();
     return -1;
