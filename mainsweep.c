@@ -53,7 +53,7 @@ int main(int argc, char *argv[]){
       newGame = 1;
       mode = 3;
     }
-		if(strcmp("demo", s) == 0){
+    if(strcmp("demo", s) == 0){
       newGame = 1;
       mode = 4;
     }
