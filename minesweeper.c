@@ -109,7 +109,7 @@ int parseArgs(int argc, char *argv[], int *mode){
     return 0;
   }
   else if((err = strcmp("instructions", argv[1]) == 0)){
-    printf("Type cell number to clear a space.Columns are letters and numbers are rows. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb.\n");
+    printf("\nType cell number to clear a space. If the space is not a bomb, then it will have a number saying how many bombs are near it. If you hit a bomb, you lose. You win by clearing every space that is not a bomb. Begin by typing in a column and a cell as in: a3\n\n");
     return 0;
   }
   else if((err = strcmp("demo", argv[1]) == 0)){
@@ -133,7 +133,7 @@ board * newBoard(int mode){
   int i, bombs, cleanC, len;
   board * b;
 	
-  if(mode == 1){ //all of these #'s are just placeholders
+  if(mode == 1){ 
     len = 6;
     bombs = 5;
   } else if(mode == 2){
