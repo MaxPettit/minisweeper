@@ -344,15 +344,21 @@ int readCell(board *bd){
     ret=0;
     ret = scanf("%c",&c);
     if(ret == 1){ 
-      ret = scanf("%d",&r);
+      ret = scanf("%d", &r);
       if(ret == 1){
-	col = (c - 'a')%26 +1;
-	if(r < 1 || col < 1 || r > bd->side|| col > bd->side){
-	  printf("Invalid input Try again\n");
+	if(c >= 'A' && c <= 'Z'){
+	  col = (c - 'A')%26 +1;
+	  setVis(bd, r, col, 2);
+	  printBoard(bd);
+	}else{
+	  col = (c - 'a')%26 +1;
+	  if(r < 1 || col < 1 || r > bd->side|| col > bd->side){
+	    printf("Invalid input Try again\n");
+	  }
+	  err = revealCell(bd, r, col);
+	  if(err == 1) printf("Already Opened. Try again\n");
+	  if(err == 2) break; //Game is over
 	}
-	err = revealCell(bd, r, col);
-	if(err == 1) printf("Already Opened. Try again\n");
-	if(err == 2) break; //Game is over
       }
     }
   }
