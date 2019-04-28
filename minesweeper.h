@@ -81,14 +81,11 @@ int printBoard(board const * startB);
  */
 int revealCell(board *bd, int row, int col);
 
+/* Reads user input cell
+ * Calls reveal cell if input is valid
+ * Returns next mode to play again or zero to quit
+ */
+int readCell(board *bd);
+
 #endif
 
-/* Statics:
- * GetVal SetVal GetVis SetVis
- * Get Result (when cell is called, test if bomb or not)
- * Print Result Message
- * 
- *Idea:
- *Create a matrix of other objects where each object has 2 values
- *      Value, and 1/0 for hidden or visible. Like "point" from quiz
- */
