@@ -337,3 +337,39 @@ int revealCell(board *bd, int row, int col){
   return err;
 }
 
+int readCell(board *bd){
+  char c, s[7];
+  int err, ret, col, r;
+  while(1){
+    ret=0;
+    ret = scanf("%c",&c);
+    if(ret == 1){ 
+      ret = scanf("%d",&r);
+      if(ret == 1){
+	col = (c - 'a')%26 +1;
+	if(r < 1 || col < 1 || r > bd->side|| col > bd->side){
+	  printf("Invalid input Try again\n");
+	}
+	err = revealCell(bd, r, col);
+	if(err == 1) printf("Already Opened. Try again\n");
+	if(err == 2) break; //Game is over
+      }
+    }
+  }
+    
+  ret = scanf("%s", s); //sets next mode
+  if(strcmp("easy", s) == 0){
+    return 1; 
+  }
+  if(strcmp("medium", s) == 0){
+    return 2;
+  }
+  if(strcmp("hard", s) == 0){
+    return 3;
+  }
+  if(strcmp("demo", s) == 0){
+    return 4;
+  }
+  return 0;
+}
+
