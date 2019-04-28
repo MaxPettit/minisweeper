@@ -8,7 +8,7 @@
 
 int main(int argc, char *argv[]){
   board *b;
-  char c, *s;
+  char c, s[7];
   int mode, err, newGame = 1, ret,col, r;
   mode = 1;
   srand(time(0));
