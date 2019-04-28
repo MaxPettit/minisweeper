@@ -356,18 +356,19 @@ int readCell(board *bd){
       }
     }
   }
-    
-  ret = scanf("%s", s); //sets next mode
-  if(strcmp("easy", s) == 0){
+	
+  getchar();
+  fgets(s, 8, stdin); //sets next mode
+  if(strcmp("easy\n", s) == 0){
     return 1; 
   }
-  if(strcmp("medium", s) == 0){
+  if(strcmp("medium\n", s) == 0){
     return 2;
   }
-  if(strcmp("hard", s) == 0){
+  if(strcmp("hard\n", s) == 0){
     return 3;
   }
-  if(strcmp("demo", s) == 0){
+  if(strcmp("demo\n", s) == 0){
     return 4;
   }
   return 0;
