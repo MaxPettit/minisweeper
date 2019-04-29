@@ -298,11 +298,12 @@ int printBoard(board const * bd){
   printf("\n");
   for(row = 1; row <= bd->side; row++){
     for(col = 1; col <= bd->side; col++){
-      if(getVis(bd, row, col)){
+      if(getVis(bd, row, col) == 1){
 	t = getVal(bd, row, col);
 	if(t >= 0) printf("%3d", t);
 	else printf("  X");
       }
+       else if(getVis(bd, row, col) == 2) printf("  B");
        else printf("  ~");
     }
     printf("%3d\n", row);
