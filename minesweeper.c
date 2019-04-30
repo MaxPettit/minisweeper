@@ -339,9 +339,11 @@ int revealCell(board *bd, int row, int col){
 }
 
 int readCell(board *bd){
+  int readCell(board *bd){
   char c, s[7];
-  int err, ret, col, r;
+  int err, ret, col, r,bombsLeft,i,j,cnt;
   while(1){
+    cnt=0;
     ret=0;
     ret = scanf("%c",&c);
     if(ret == 1){ 
@@ -361,6 +363,18 @@ int readCell(board *bd){
 	  if(err == 2) break; //Game is over
 	}
       }
+    }
+    for(i=1;i<bd->side;i++){
+      for(j=1;j<bd->side;j++){
+	if(getVis(bd,i,j)==2)
+	  cnt++;
+      }
+    }
+    bombsLeft=bd->bombs - cnt;
+    if(bombsLeft<0){
+      printf("you have marked more spots, than there are bombs, please unmark a spot\n");
+    }else{
+       printf("\n There are %d bombs left \n",bombsLeft);
     }
   }
 	
