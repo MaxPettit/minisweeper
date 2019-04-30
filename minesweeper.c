@@ -375,7 +375,7 @@ int readCell(board *bd){
 	  else if(getVis(bd, r, col) == 0){
 	    setVis(bd, r, col, 2);
 	    printBoard(bd);
-	    }
+	    } else printf("Already opened. Try again\n");
 	}else{
 	  col = (c - 'a')%26 +1;
 	  if(r < 1 || col < 1 || r > bd->side|| col > bd->side){
