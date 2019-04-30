@@ -316,7 +316,7 @@ int revealCell(board *bd, int row, int col){
   if(row < 0 || col < 0 || row > bd->side || col > bd->side) return -1;
   int t, err = 0;
   
-  if(getVis(bd, row, col) == 1) return 0;	
+  if(getVis(bd, row, col) == 1) return 1; //before this return value was 0 and so the print function was never accesed	
   	
   setVis(bd, row, col, 1);
   t = getVal(bd, row, col);
@@ -341,7 +341,7 @@ int revealCell(board *bd, int row, int col){
 int readCell(board *bd){
   int readCell(board *bd){
   char c, s[7];
-  int err, ret, col, r,bombsLeft,i,j,cnt;
+  int err, ret, col, r, bombsLeft, i, j, cnt;
   while(1){
     cnt=0;
     ret=0;
@@ -372,9 +372,9 @@ int readCell(board *bd){
     }
     bombsLeft=bd->bombs - cnt;
     if(bombsLeft<0){
-      printf("you have marked more spots, than there are bombs, please unmark a spot\n");
+      printf("you have marked more spots than there are bombs, please unmark a spot\n");
     }else{
-       printf("\n There are %d bombs left \n",bombsLeft);
+       printf("\n There are %d bomb(s) left \n",bombsLeft);
     }
   }
 	
