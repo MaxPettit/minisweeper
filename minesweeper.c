@@ -367,7 +367,9 @@ int readCell(board *bd){
 	  if(err == 2) break; //Game is over
 	}
       }
+    else printf("Invalid input Try again\n");
     }
+    else  printf("Invalid input Try again\n");
     for(i=1;i<=bd->side;i++){
       for(j=1;j<=bd->side;j++){
 	if(getVis(bd,i,j)==2)
