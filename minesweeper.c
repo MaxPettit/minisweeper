@@ -292,6 +292,7 @@ if(!bomb_bd) return NULL;
 int printBoard(board const * bd){
   int row, col, t, i, j, bombsLeft, cnt;
   cnt = 0;
+  cnt2 = 0;
   if(!bd) return -1;
   for(int i = 1; i <= bd->side; i++)
     printf("%3c", (i%26+'a'-1));
@@ -313,15 +314,19 @@ int printBoard(board const * bd){
       for(j=1;j<=bd->side;j++){
 	if(getVis(bd,i,j) == 2)
 	  cnt++;
+	if(getVis(bd,i,j) == 1)
+	  cnt2++;
       }
     }
     bombsLeft=bd->bombs - cnt;
-    if(bombsLeft<0){
+     if(cnt2!=(bd->side*bd->side)){
+	if(bombsLeft<0){
       printf("you have marked more spots than there are bombs, please unmark a spot by typing in the capital letter\n");
     }else{
       if(bombsLeft == 1) printf("\n There is %d bomb left \n", bombsLeft);
       else printf("\n There are %d bombs left \n", bombsLeft);
-    }
+    	}
+     }
   
   return 0;
 }
