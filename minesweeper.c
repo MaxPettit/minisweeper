@@ -369,11 +369,7 @@ int readCell(board *bd){
       if(ret == 1){
 	if(c >= 'A' && c <= 'Z'){
 	  col = (c - 'A')%26 +1;
-	if(getVis(bd, r, col)==2){ //if they enter in the capital value again, it gets rid of the bomb, that they Marked
-	    setVis(bd, r, col, 0);
-	  }else{
-	   setVis(bd, r, col, 2);
-	  }
+	  setVis(bd,r,col, 2);
 	  printBoard(bd);
 	}else{
 	  col = (c - 'a')%26 +1;
@@ -386,6 +382,7 @@ int readCell(board *bd){
 	}
       }
     }
+   
   }
 	
   getchar();
@@ -404,5 +401,4 @@ int readCell(board *bd){
   }
   return 0;
 }
-
 
