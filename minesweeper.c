@@ -290,8 +290,8 @@ if(!bomb_bd) return NULL;
 }
 
 int printBoard(board const * bd){
-  int row, col, t;
-
+  int row, col, t, i, j, bombsLeft, cnt;
+  cnt = 0;
   if(!bd) return -1;
   for(int i = 1; i <= bd->side; i++)
     printf("%3c", (i%26+'a'-1));
@@ -303,11 +303,26 @@ int printBoard(board const * bd){
 	if(t >= 0) printf("%3d", t);
 	else printf("  X");
       }
-       else if(getVis(bd, row, col) == 2) printf("  B");
-       else printf("  ~");
+      else if(getVis(bd, row, col) == 2) printf("  B");
+      else printf("  ~");
     }
     printf("%3d\n", row);
   }
+
+    for(i=1;i<=bd->side;i++){
+      for(j=1;j<=bd->side;j++){
+	if(getVis(bd,i,j) == 2)
+	  cnt++;
+      }
+    }
+    bombsLeft=bd->bombs - cnt;
+    if(bombsLeft<0){
+      printf("you have marked more spots than there are bombs, please unmark a spot by typing in the capital letter\n");
+    }else{
+      if(bombsLeft == 1) printf("\n There is %d bomb left \n", bombsLeft);
+      else printf("\n There are %d bombs left \n", bombsLeft);
+    }
+  
   return 0;
 }
 
@@ -339,11 +354,9 @@ int revealCell(board *bd, int row, int col){
 }
 
 int readCell(board *bd){
-  int readCell(board *bd){
   char c, s[7];
-  int err, ret, col, r, bombsLeft, i, j, cnt;
+  int err, ret, col, r;
   while(1){
-    cnt=0;
     ret=0;
     ret = scanf("%c",&c);
     if(ret == 1){ 
@@ -367,20 +380,6 @@ int readCell(board *bd){
 	  if(err == 2) break; //Game is over
 	}
       }
-    else printf("Invalid input Try again\n");
-    }
-    else  printf("Invalid input Try again\n");
-    for(i=1;i<=bd->side;i++){
-      for(j=1;j<=bd->side;j++){
-	if(getVis(bd,i,j)==2)
-	  cnt++;
-      }
-    }
-    bombsLeft=bd->bombs - cnt;
-    if(bombsLeft<0){
-      printf("you have marked more spots than there are bombs, please unmark a spot by typing in the capital letter\n");
-    }else{
-       printf("\n There are %d bomb(s) left \n",bombsLeft);
     }
   }
 	
@@ -400,4 +399,5 @@ int readCell(board *bd){
   }
   return 0;
 }
+
 
