@@ -364,8 +364,8 @@ int readCell(board *bd){
 	}
       }
     }
-    for(i=1;i<bd->side;i++){
-      for(j=1;j<bd->side;j++){
+    for(i=1;i<=bd->side;i++){
+      for(j=1;j<=bd->side;j++){
 	if(getVis(bd,i,j)==2)
 	  cnt++;
       }
