@@ -351,7 +351,11 @@ int readCell(board *bd){
       if(ret == 1){
 	if(c >= 'A' && c <= 'Z'){
 	  col = (c - 'A')%26 +1;
-	  setVis(bd, r, col, 2);
+	if(getVis(bd, r, col)==2){ //if they enter in the capital value again, it gets rid of the bomb, that they Marked
+	    setVis(bd, r, col, 0);
+	  }else{
+	   setVis(bd, r, col, 2);
+	  }
 	  printBoard(bd);
 	}else{
 	  col = (c - 'a')%26 +1;
@@ -372,7 +376,7 @@ int readCell(board *bd){
     }
     bombsLeft=bd->bombs - cnt;
     if(bombsLeft<0){
-      printf("you have marked more spots than there are bombs, please unmark a spot\n");
+      printf("you have marked more spots than there are bombs, please unmark a spot by typing in the capital letter\n");
     }else{
        printf("\n There are %d bomb(s) left \n",bombsLeft);
     }
