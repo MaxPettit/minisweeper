@@ -290,7 +290,7 @@ if(!bomb_bd) return NULL;
 }
 
 int printBoard(board const * bd){
-  int row, col, t, i, j, bombsLeft, cnt;
+  int row, col, t, i, j, bombsLeft, cnt, cnt2;
   cnt = 0;
   cnt2 = 0;
   if(!bd) return -1;
@@ -327,17 +327,16 @@ int printBoard(board const * bd){
       else printf("\n There are %d bombs left \n", bombsLeft);
     	}
      }
-  
-  return 0;
+     return 0;
 }
 
 int revealCell(board *bd, int row, int col){
   if(!bd) return -1;
   if(row < 0 || col < 0 || row > bd->side || col > bd->side) return -1;
   int t, err = 0;
+
+  if(getVis(bd, row, col) == 1) return 1;
   
-  if(getVis(bd, row, col) == 1) return 1; //before this return value was 0 and so the print function was never accesed	
-  	
   setVis(bd, row, col, 1);
   t = getVal(bd, row, col);
   printf("\n");
@@ -369,8 +368,14 @@ int readCell(board *bd){
       if(ret == 1){
 	if(c >= 'A' && c <= 'Z'){
 	  col = (c - 'A')%26 +1;
-	  setVis(bd,r,col, 2);
-	  printBoard(bd);
+	  if(getVis(bd, r, col) == 2){
+	    setVis(bd, r, col, 0);
+	    printBoard(bd);
+	    }
+	  else if(getVis(bd, r, col) == 0){
+	    setVis(bd, r, col, 2);
+	    printBoard(bd);
+	    }
 	}else{
 	  col = (c - 'a')%26 +1;
 	  if(r < 1 || col < 1 || r > bd->side|| col > bd->side){
@@ -382,7 +387,6 @@ int readCell(board *bd){
 	}
       }
     }
-   
   }
 	
   getchar();
@@ -401,4 +405,3 @@ int readCell(board *bd){
   }
   return 0;
 }
-
