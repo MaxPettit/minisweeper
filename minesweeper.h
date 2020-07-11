@@ -6,7 +6,7 @@ typedef struct _board board;
 void printUssage();
 
 //char mode would take easy, medium, or hard
-int parseArgs(int argc, char *argv[], char mode[]);
+int parseArgs(int argc, char *argv[], int *mode);
 
 //frees board off heap at end of game
 void deleteBoard(board * bd);
@@ -16,10 +16,10 @@ void deleteBoard(board * bd);
 board * newBoard(int mode);
 
 //randomly arranges bombs
-board * bombArrangement(board * blank_bd, int mode);
+void bombArrangement(board * bd);
 
 //fills in nums
-board * populateCells(board * bomb_bd); 
+void populateCells(board * bd); 
 
 /* Prints current board
  * Returns -1 if error

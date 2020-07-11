@@ -19,8 +19,8 @@ int main(int argc, char *argv[]){
     newGame = 0;
     
     b = newBoard(mode);
-    b = bombArrangement(b,mode);
-    b = populateCells(b);
+    bombArrangement(b);
+    populateCells(b);
     err = printBoard(b); assert(!err);
     mode = readCell(b);
     if(mode) newGame = 1;
